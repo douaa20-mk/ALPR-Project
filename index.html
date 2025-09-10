@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALPR Detection - BMT Internship Project</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Menu</h2>
+    <ul>
+      <li><a href="#project-description">📘 Project Description</a></li>
+      <li><a href="#upload-section">📷 Detect Plate</a></li>
+      <li><a href="#about">👥 About Us</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1>Automatic License Plate Recognition (ALPR)</h1>
+      <p>Internship Project at <strong>BMT (Bejaia Mediterranean Terminal)</strong></p>
+    </header>
+
+    <!-- Project Description -->
+    <section id="project-description">
+      <h2>📘 Project Description</h2>
+      <p>
+        We used the <strong>YOLOv8n</strong> pre-trained model and created a dataset of <strong>7,829 images</strong> labeled with Roboflow. 
+        To build our dataset, we combined different open-source datasets from Kaggle, Roboflow, and other websites.
+      </p>
+
+      <h3>Why YOLOv8?</h3>
+      <p>
+        YOLOv8 is the latest version of the "You Only Look Once" object detection models. It is fast, accurate, and lightweight, making it suitable for real-time applications like license plate detection.
+        YOLO works by dividing an image into a grid and predicting bounding boxes and class probabilities for each grid cell in a single forward pass.
+      </p>
+
+      <h3>Why Roboflow?</h3>
+      <p>
+        Roboflow simplifies labeling, augmenting datasets, and exporting them in YOLO-compatible formats. This saved us time and allowed us to focus on model training and evaluation.
+      </p>
+
+      <h3>Training Approach</h3>
+      <ul>
+        <li><strong>Model:</strong> YOLOv8n (nano version for speed)</li>
+        <li><strong>Dataset:</strong> 7,829 labeled images</li>
+        <li><strong>Tools:</strong> Roboflow, Kaggle datasets, other open-source resources</li>
+        <li><strong>Goal:</strong> High accuracy while maintaining real-time detection performance</li>
+      </ul>
+    </section>
+
+    <!-- Detect Plate Section -->
+    <section id="upload-section">
+      <h2>📷 Detect Plate</h2>
+      <input type="file" id="fileInput" accept="image/*" />
+      <button id="captureBtn">Capture from Camera</button>
+      <button id="startBtn" disabled>Start Detection</button>
+      <p id="loadingText" style="display:none;">Processing image...</p>
+      <p id="timeTaken" style="display:none;"></p>
+      <video id="video" width="320" height="240" autoplay style="display:none;"></video>
+      <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+      <button id="snapBtn" style="display:none;">Snap Photo</button>
+
+      <section id="result-section" style="display:none;">
+        <h2>Detection Results</h2>
+        <img id="resultImage" alt="Annotated Image">
+        <p><strong>Accuracy:</strong> <span id="accuracy"></span></p>
+        <div id="detections"></div>
+
+        <h3>Detected Plate(s)</h3>
+        <div id="plateImages"></div>
+        <div id="plateTexts" class="plate-text"></div>
+      </section>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+      <h2>👥 About Us</h2>
+      <p>👩‍💻 <strong>Bekhouche Sarra</strong> – AI Engineer, passionate about computer vision and industrial networks.</p>
+      <p>👩‍💻 <strong>Mokhanfer Douaa</strong> – AI Engineer, specialized in intelligent systems and automation.</p>
+      <p>This project was developed as part of our internship at <strong>BMT (Bejaia Mediterranean Terminal)</strong>, aiming to improve security and efficiency through automatic license plate recognition.</p>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 Bekhouche Sarra & Mokhanfer Douaa - BMT Internship Project</p>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
